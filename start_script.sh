@@ -22,6 +22,6 @@ ros2 launch realsense2_camera rs_launch.py \
     depth_module.infra_profile:=$DEPTH_PROFILE \
     pointcloud.enable:=$DO_POINTCLOUD \
     pointcluod.stream_filter:=$STREAM_FILTER \
-    spatial_filter.enable:=$SPATIAL_FILTER \
+    spatial_filter.enable:=$DO_SPATIAL_FILTER \
     temporal_filter.enable:=$DO_TEMPORAL_FILTER \
     hole_filling_filter.enable:=$DO_HOLE_FILLING_FILTER \
