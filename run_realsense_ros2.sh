@@ -1,6 +1,29 @@
 #!/bin/bash
 
-docker run -it --rm --network=host --privileged \
+# Optional: Add IP address of ROS 2 discovery server
+ROS_DISCOVERY_SERVER=
+
+CAMERA_ID=1
+
+RGB_PROFILE=1280x720x5
+DEPTH_PROFILE=424x240x5
+
+DO_POINTCLOUD=false
+STREAM_FILTER=2
+DO_SPATIAL_FILTER=true
+DO_TEMPORAL_FILTER=true
+DO_HOLE_FILLING_FILTER=true
+
+docker run -it --rm --network host --privileged \
     -v /dev/bus/usb:/dev/bus/usb \
     -v /tmp:/tmp \
+    -e ROS_DISCOVERY_SERVER="$ROS_DISCOVERY_SERVER" \
+    -e RMW_IMPLEMENTATION="$RMW_IMPLEMENTATION" \
+    -e CAMERA_ID="$CAMERA_ID" \
+    -e RGB_PROFILE="$RGB_PROFILE" \
+    -e DEPTH_PROFILE="$DEPTH_PROFILE" \
+    -e DO_POINTCLOUD="$DO_POINTCLOUD" \
+    -e DO_SPATIAL_FILTER="$DO_SPATIAL_FILTER" \
+    -e DO_TEMPORAL_FILTER="$DO_TEMPORAL_FILTER" \
+    -e DO_HOLE_FILLING_FILTER="$DO_HOLE_FILLING_FILTER" \
     realsense_ros2
